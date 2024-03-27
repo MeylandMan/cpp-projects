@@ -1,11 +1,15 @@
-#version 330 core
+#version 410
 
-layout (location = 0) out vec4 a_Color;
+out vec4 fragColor;
+out vec4 in_Color;
 
+in vec2 texCoord;
+in vec4 Colors;
+
+uniform sampler2D texture0;
 
 void main()
 {
-	
-	a_Color = vec4(1, 0.0, 0.0, 1);
-
+    fragColor = Colors * texture(texture0, texCoord);
+    // fragColor = vec4(texCoord, 0.0, 1.0); /*(Showing the Texture mapping)*/
 }
